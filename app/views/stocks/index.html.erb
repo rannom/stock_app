@@ -1,15 +1,29 @@
 <div class="jumbotron">
-	<h1> Stock productivity calculator  </h1>
-
-	<h2>
-		Stocks
-	</h2>
-
+	<%= link_to "Enter new stock", '#', class: "btn btn-large btn-primary pull-right" %>
+	
+	<h1> Stocks  </h1>
 	<ul>
-	<% @stock_items.each do |t| %>
-	<li> <%= t.name %> </li>
-	<% end %>
+		<table id="product_lists">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Quantity</th>
+					<th>Percentage</th>
+					<th>Years</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @stock_items.each do |stock| %>
+				<tr>
+					<td><%= stock.name %></td>
+					<td><%= stock.price %></td>
+					<td><%= stock.quantity %></td>
+					<td><%= stock.percentage %></td>
+					<td><%= stock.years %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
 	</ul>
-
-	<%= link_to "Enter new stock", '#', class: "btn btn-large btn-primary" %>
 </div>
