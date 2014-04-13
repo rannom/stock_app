@@ -1,0 +1,84 @@
+<% provide(:title, 'Calculation result') %>
+<div class= "jumbotron">
+	<h1> Calculation result </h1>
+
+
+	<div class="container">
+		<div class="row-fluid">
+			<div class="col-md-4">
+				<h1>data</h1>
+
+					<ul>
+					<div class="table-responsive">
+						<table class="table table-striped table-bordered table-condensed table-hover">		
+							<tbody id="custom_table">
+								<tr>
+									<td>Name</td>
+									<td><%= @stock_item.name %></td>
+								</tr>
+								<tr>
+									<td>Price</td>
+									<td><%= @stock_item.price %></td>
+								</tr>
+								<tr>
+									<td>Quantity</td>
+									<td><%= @stock_item.quantity %></td>
+								</tr>
+								<tr>
+									<td>Percentage</td>
+									<td><%= @stock_item.percentage %></td>
+								</tr>
+								<tr>
+									<td>Years</td>
+									<td><%= @stock_item.years %></td>
+								</tr>					
+							</tbody>
+						</table>
+					</div>
+				</ul>
+			</div>
+
+
+
+			<div class="col-md-4">
+				<h1>graph</h1>
+
+
+<%= high_chart("my_id", @h) %>
+
+
+
+			</div>
+
+
+
+			<div class="col-md-2">
+				<h1>list</h1>
+
+				<ul>
+					<div class="table-responsive">
+						<table class="table table-striped table-bordered table-condensed table-hover">
+							<thead>
+								<tr>
+									<th> Year </th>
+									<th> Price </th>
+								</tr>
+							</thead>
+							<tbody id="custom_table">
+								<%@stock_values.each_with_index do |value, index| %>
+								<tr>
+									<td><%= index %></td>
+									<td><%= number_with_precision(value, precision: 2) %></td>
+								</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div>
+				</ul>
+			</div> 
+		</div>
+	</div>
+</div>
+
+
+

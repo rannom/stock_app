@@ -1,2 +1,60 @@
-<h1>Stocks#new</h1>
-<p>Find me in app/views/stocks/new.html.erb</p>
+<% provide(:title, 'Enter stock details') %>
+
+<div class="jumbotron">
+	<h1> Enter stock details </h1>
+	<div class=text-center><%= render 'shared/flash_messages' %></div>
+	<div class="container">
+		<div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4">
+
+			<form action="/stocks" class="new_stock" id="new_stock" method="post" >
+				<fieldset>
+
+					<%= form_for @stock do |f| %>
+					<div class = "control-group">
+						<div class="controls">
+							<%= f.label :name %><br>
+							<%= f.text_field :name %>
+						</div>
+					</div>
+
+					<div class = "control-group">
+						<div class="controls">
+							<%= f.label :price %><br>
+							<%= f.text_field :price %>
+						</div>
+					</div>
+
+					<div class = "control-group">
+						<div class="controls">
+							<%= f.label :quantity %><br>
+							<%= f.text_field :quantity %>
+						</div>
+					</div>
+					<div class = "control-group">
+						<div class="controls">
+							<%= f.label :percentage %><br>
+							<%= f.text_field :percentage %>
+						</div>
+					</div>
+					<div class = "control-group">
+						<div class="controls">
+							<%= f.label :years %><br>
+							<%= f.text_field :years %>
+						</div>
+					</div>
+					<p>
+						<div class = "control-group">
+							<div class="controls">
+								<%= f.submit "Calculate", class: "btn btn-primary" %>
+							</div>
+						</div>
+					</p>
+					<% end %>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
