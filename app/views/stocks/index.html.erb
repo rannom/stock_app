@@ -16,7 +16,7 @@
 			</thead>
 			<tbody id="custom_table">
 				<% @stock_items.each do |stock| %>
-				<tr>
+				<tr class='clickableRow' href='/#{params[:location]}'>
 					<td><%= stock.name %></td>
 					<td><%= number_with_precision(stock.price, precision: 2) %></td>
 					<td><%= stock.quantity %></td>

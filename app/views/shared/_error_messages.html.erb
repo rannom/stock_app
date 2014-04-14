@@ -1,12 +1,8 @@
-<% if @stock.errors.any? %>
-  <div id="error_explanation">
-    <div class="alert alert-error">
-      The form contains <%= pluralize(@stock.errors.count, "error") %>.
+  <% if @stock.errors.any? %>
+ 
+    <% flash.each do |key, value| %>
+    <div class="<%= flash_class(key) %> fade in">
+      <%= value %>
     </div>
-    <ul>
-    <% @stock.errors.full_messages.each do |msg| %>
-      <li>* <%= msg %></li>
     <% end %>
-    </ul>
-  </div>
-<% end %>
+  <% end %>
