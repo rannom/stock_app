@@ -16,4 +16,22 @@ class Stock < ActiveRecord::Base
 	 :greater_than_or_equal_to => 0
 	validates_numericality_of :years, :only_integer => true, presence: true,
 	:greater_than_or_equal_to => 0
+
+	def calculate_productivity
+		y = years
+		p = percentage * 0.01
+		sum = (price * quantity)
+		productivitySums = Array.new()
+		productivitySums.push (sum)
+		
+		i = 0
+
+		while i < y  do
+			sum += (sum * p)
+			productivitySums.push (sum)
+
+			i +=1
+		end
+		return productivitySums.collect{|i| i.to_f}
+	end
 end

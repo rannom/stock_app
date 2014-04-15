@@ -3,9 +3,6 @@ StockApp::Application.routes.draw do
   
   resources :stocks
 
-  match '/new',  to: 'stocks#new',            via: 'get'
-  match '/result', to: 'stocks#result',       via: 'get'
-  match '/stocks/create' => 'stocks#create', :via => :post
   root  'stocks#index'
   
 
