@@ -14,18 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-
-$(function () {
-  if ($('#stocks_table').length > 0) {
-    setTimeout(updateStocks, 10000);
-  }
-});
-
-function updateStocks() {
-	var stock_id = $('#stocks_table').attr('data-id');
-	var after = $('.s:last').attr('data-time');
-  $.getScript('/index.js?stock_id=' + stock_id + "&after=" + after);
-  setTimeout(updateStocks, 10000);
-}
-

@@ -22,13 +22,13 @@ class Stock < ActiveRecord::Base
 		p = percentage * 0.01
 		sum = (price * quantity)
 		productivitySums = Array.new()
-		productivitySums.push (sum)
+		productivitySums.push ('%.2f' % sum)
 		
 		i = 0
 
 		while i < y  do
 			sum += (sum * p)
-			productivitySums.push (sum)
+			productivitySums.push ('%.2f' % sum)
 
 			i +=1
 		end

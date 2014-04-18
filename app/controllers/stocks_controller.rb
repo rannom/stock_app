@@ -1,8 +1,8 @@
 class StocksController < ApplicationController
 
+
 	def index
-		@stocks = Stock.all
-	    #@stocks = Stock.where("stock_id = ? and created_at > ?", params[:stock_id], Time.at(params[:after].to_i + 1))
+		@stocks = Stock.where('id > ?', params[:after].to_i)
 	end
 
 	def new
@@ -16,7 +16,7 @@ class StocksController < ApplicationController
 	def create
 		@stock = Stock.new(stock_params)  
 		if @stock.save
-		  redirect_to stock_path(@stock)
+		  redirect_to stock_path(@stock), notice: "Added stock."
 		else
 			flash.now[:danger] = @stock.errors.full_messages.join("<br>").html_safe
 			render 'new'
@@ -28,5 +28,4 @@ class StocksController < ApplicationController
 	def stock_params
 		params.require(:stock).permit(:name, :price, :quantity, :percentage, :years)
 	end
-
 end

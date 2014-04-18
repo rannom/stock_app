@@ -1,0 +1,9 @@
+      <%= div_for stock, data: {id: stock.id} do %>
+      <tr>
+      	<td><%= link_to stock.name, stock_path(stock) %></td>
+      	<td><%= number_with_precision(stock.price, precision: 2) %></td>
+      	<td><%= stock.quantity %></td>
+      	<td><%= number_with_precision(stock.percentage, precision: 2) %></td>
+      	<td><%= stock.years %></td>
+      </tr>
+      <% end %>

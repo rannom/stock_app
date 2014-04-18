@@ -19,6 +19,7 @@ development:
   encoding: unicode
   database: stock_app_development
   pool: 5
+  timeout: 5000
   username: stock_app
   password:
 
@@ -48,6 +49,7 @@ test: &test
   encoding: unicode
   database: stock_app_test
   pool: 5
+  timeout: 5000
   username: stock_app
   password:
 
@@ -56,6 +58,7 @@ production:
   encoding: unicode
   database: stock_app_production
   pool: 5
+  timeout: 5000
   username: stock_app
   password:
 

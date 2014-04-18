@@ -1,36 +1,27 @@
 <div class="jumbotron">	
 	<%= link_to "Enter new stock", new_stock_path, class: "btn btn-large btn-primary pull-right" %>
 	<h1> Stocks  </h1>
+	
 	<ul>
-
-
-
-
-
-
 		<div class="table-responsive">
-		<table  class="table table-striped table-bordered table-condensed table-hover">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Price</th>
-					<th>Quantity</th>
-					<th>Percentage</th>
-					<th>Years</th>
-				</tr>
-			</thead>
-			<tbody id="custom_table">
-				<% @stocks.each do |s| %>
-          		<tr>
-          			<td><%= link_to s.name, stock_path(s) %></td>
-					<td><%= number_with_precision(s.price, precision: 2) %></td>
-					<td><%= s.quantity %></td>
-					<td><%= number_with_precision(s.percentage, precision: 2) %></td>
-					<td><%= s.years %></td>
-				</tr>
-				<% end %>
-			</tbody>
-		</table>
+			<table  class="table table-striped table-bordered table-condensed table-hover">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Price</th>
+						<th>Quantity</th>
+						<th>Percentage</th>
+						<th>Years</th>
+					</tr>
+				</thead>
+				<tbody id="custom_table">
+					<%= content_tag :div, id: "stocks", data: {url: stocks_url(@stock)} do %>
+					<p id="show_stocks">
+						<%= render @stocks %>
+					</p>
+						<% end %>
+				</tbody>
+			</table>
 		</div>
 	</ul>
 </div>
