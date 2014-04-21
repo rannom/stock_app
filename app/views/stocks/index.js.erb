@@ -1,1 +1,1 @@
-StockPoller.addStocks("<%= j render(@stocks) %>");
+$("#stocks").html(" <%= escape_javascript(render @stocks) %>" );

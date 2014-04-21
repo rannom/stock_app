@@ -1,49 +1,52 @@
 	<% provide(:title, 'Enter stock details') %>
 
-<div class="jumbotron">
-	<h1> Enter stock details </h1>
+	<div class="jumbotron">
+		<h1> Enter stock details </h1>
 
-	<div class="row">
-		<div class="col-sm-3"></div>
-		<div class="col-sm-6">
-			<div class="col-sm-offset-3"><%= render 'shared/error_messages' %></div>
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6">
+				<div class="col-sm-offset-3"><%= render 'shared/error_messages' %></div>
 
-			<form role="form" action="/stocks" class="form-horizontal" id="new_stock" method="post" >
+				<form role="form" action="/stocks" class="form-horizontal" id="new_stock" method="post" >
 
-				<%= form_for @stock do |f| %>
-				<div class="form-group">
-					<%= f.label :name, class:"control-label col-sm-3" %>
-					<div class="col-sm-9"> <%= f.text_field :name, 
-					placeholder: "Company", class: "form-control" %></div>
-				</div>
-				<div class = "form-group">
-					<%= f.label :price, class:"control-label col-sm-3" %>
-					<div class="col-sm-9"> <%= f.text_field :price, 
-					placeholder: "0.00", class: "form-control" %></div>
-				</div>
-				<div class = "form-group">
-					<%= f.label :quantity, class:"control-label col-sm-3" %>
-					<div class="col-sm-9"> <%= f.text_field :quantity, 
-					placeholder: "0", class: "form-control" %></div>
-				</div>
-				<div class = "form-group">
-					<%= f.label :percentage, class:"control-label col-sm-3" %>
-					<div class="col-sm-9"> <%= f.text_field :percentage, 
-					placeholder: "0.00", class: "form-control" %></div>
-				</div>
-				<div class = "form-group">
-					<%= f.label :years, class:"control-label col-sm-3" %>
-					<div class="col-sm-9"> <%= f.text_field :years, 
-					placeholder: "0", class: "form-control" %></div>
-				</div>
-				<div class="col-sm-3 col-sm-9 pull-right"><%= f.submit "Calculate",
-				class: "btn btn-primary" %></div>		
-				<% end %>
-			</form>
+					<%= form_for @stock do |f| %>
+					<div class="form-group">
+						<%= f.label :name, class:"control-label col-sm-3" %>
+						<div class="col-sm-9"> <%= f.text_field :name, 
+						placeholder: "Company", class: "form-control" %></div>
+					</div>
+					<div class = "form-group">
+						<%= f.label :price, class:"control-label col-sm-3" %>
+						<div class="col-sm-9"> <%= f.text_field :price, 
+						placeholder: "0.00", class: "form-control" %></div>
+					</div>
+					<div class = "form-group">
+						<%= f.label :quantity, class:"control-label col-sm-3" %>
+						<div class="col-sm-9"> <%= f.text_field :quantity, 
+						placeholder: "0", class: "form-control" %></div>
+					</div>
+					<div class = "form-group">
+						<%= f.label :percentage, class:"control-label col-sm-3" %>
+						<div class="col-sm-9"> <%= f.text_field :percentage, 
+						placeholder: "0.00", class: "form-control" %></div>
+					</div>
+					<div class = "form-group">
+						<%= f.label :years, class:"control-label col-sm-3" %>
+						<div class="col-sm-9"> <%= f.text_field :years, 
+						placeholder: "0", class: "form-control" %></div>
+					</div>
+					<div class="actions">
+						<div class="col-sm-3 col-sm-9 pull-right">
+							<%= f.submit "Calculate", class: "btn btn-primary" %>
+						</div>		
+					</div>
+					<% end %>
+				</form>
+			</div>
+			<div class="col-sm-3"></div>
 		</div>
-		<div class="col-sm-3"></div>
 	</div>
-</div>
 
 
 
