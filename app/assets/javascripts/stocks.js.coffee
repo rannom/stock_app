@@ -9,5 +9,5 @@ $ ->
         console.log "Load was performed."
         return
       return
-    ), 5000
+    ), 10000
   return
