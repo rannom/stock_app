@@ -1,3 +1,113 @@
 # Assignment implemented in Rails 4
 
-by Ranno
+Notes:
+
+Time proportions:
+
+1. Getting to know RoR - 20%
+2. Basic Functionality - 30%
+3. Subtask: table periodic update - 40% (sad but true)
+4. Tests 10%
+
+
+Known issues:
+
+1. Table row height change after 1'st update
+2. 2 tests missing: Receive stocks updates instantly, comparison of tables
+
+
+
+
+by Ranno Maripuu
+
+
+Cucumber feature test results:
+
+rannos-mbp:stock_app ranno$ cucumber
+/Users/ranno/.rvm/gems/ruby-2.1.1@global/gems/bundler-1.5.3/lib/bundler/runtime.rb:220: warning: Insecure world writable dir /usr in PATH, mode 040777
+Using the default profile...
+# Non Functional Requirements:
+#
+# The application must be implemented in Rails 4
+# Twitter bootstrap 3 UI must be used
+# Source code must be placed into Github as open source project
+# Application must be deployed into Heroku
+# This feature must be placed into applications feature directory
+# This feature must be runnable by cucumber. Only small changes to this feature can be made if needed.
+# Challenge result is link to the application repository
+Feature: Calculate stock productivity
+  In order to manage and estimate my stock
+  I must be able to calculate and store stock data
+
+  Scenario: Calculate prices                                                              # features/stock.feature:15
+    When I open the application url                                                       # features/step_definitions/stock_steps.rb:3
+    Then I must see the front page with application title "Stock productivity calculator" # features/step_definitions/stock_steps.rb:7
+    When I press button "Enter new stock"                                                 # features/step_definitions/stock_steps.rb:27
+    Then I must see the page with title "Enter stock details"                             # features/step_definitions/stock_steps.rb:15
+    And I must be able to enter the following values:                                     # features/step_definitions/stock_steps.rb:19
+      | Stock name | Company XYZ | required string  |
+      | Price      | 2.00        | required decimal |
+      | Quantity   | 200         | required integer |
+      | Percentage | 3.00        | required decimal |
+      | Years      | 10          | required integer |
+    And I press button "Calculate"                                                        # features/step_definitions/stock_steps.rb:27
+    Then I must see the page with title "Calculation result"                              # features/step_definitions/stock_steps.rb:15
+    And I must see the original input data:                                               # features/step_definitions/stock_steps.rb:31
+      | Stock name | Company XYZ |
+      | Price      | 2.00        |
+      | Quantity   | 200         |
+      | Percentage | 3.00        |
+      | Years      | 10          |
+    And list of stock values for each year:                                               # features/step_definitions/stock_steps.rb:39
+      | 0  | 400.00 |
+      | 1  | 412.00 |
+      | 2  | 424.36 |
+      | 3  | 437.09 |
+      | 4  | 450.20 |
+      | 5  | 463.71 |
+      | 6  | 477.62 |
+      | 7  | 491.95 |
+      | 8  | 506.71 |
+      | 9  | 521.91 |
+      | 10 | 537.57 |
+    And the stock growth is shown as a visual graph                                       # features/step_definitions/stock_steps.rb:52
+    And the stock data must be saved into the database for later review                   # features/step_definitions/stock_steps.rb:56
+    When I click "Back"                                                                   # features/step_definitions/stock_steps.rb:60
+    Then I must see the page with title "Enter stock details"                             # features/step_definitions/stock_steps.rb:15
+
+  Scenario: View exisiting calculations                                                   # features/stock.feature:54
+    Given the system has already calculated stocks                                        # features/step_definitions/stock_steps.rb:65
+      | Name      | Price  | Quantity | Percentage | Years |
+      | Apple     | 172.00 | 10       | 5.00       | 10    |
+      | Microsoft | 30.00  | 25       | 1.25       | 5     |
+    When I open the application url                                                       # features/step_definitions/stock_steps.rb:3
+    Then I must see the front page with application title "Stock productivity calculator" # features/step_definitions/stock_steps.rb:7
+    And I must see a table of saved stocks:                                               # features/step_definitions/stock_steps.rb:72
+      | Name      | Price  | Quantity | Percentage | Years |
+      | Apple     | 172.00 | 10       | 5.00       | 10    |
+      | Microsoft | 30.00  | 25       | 1.25       | 5     |
+    When I click on the calculated line "Apple"                                           # features/step_definitions/stock_steps.rb:82
+    Then I must see the already calculated data                                           # features/step_definitions/stock_steps.rb:87
+    When I click "Back"                                                                   # features/step_definitions/stock_steps.rb:60
+    Then I must see the front page with application title "Stock productivity calculator" # features/step_definitions/stock_steps.rb:7
+
+  Scenario: Receive stocks updates instantly                                   # features/stock.feature:74
+    Given the system has already calculated stocks                             # features/step_definitions/stock_steps.rb:65
+      | Name  | Price  | Quantity | Percentage | Years |
+      | Apple | 172.00 | 10       | 5.00       | 10    |
+    When I open the application url                                            # features/step_definitions/stock_steps.rb:3
+    And I must see a table of saved stocks:                                    # features/step_definitions/stock_steps.rb:72
+      | Name  | Price  | Quantity | Percentage | Years |
+      | Apple | 172.00 | 10       | 5.00       | 10    |
+    And stock data changes on backend                                          # features/step_definitions/stock_steps.rb:98
+      | Name  | Price  | Quantity | Percentage | Years |
+      | Apple | 174.00 | 10       | 5.00       | 10    |
+    Then I should see stock price "174.00" for "Apple" in less than 10 seconds # features/step_definitions/stock_steps.rb:102
+      TODO (Cucumber::Pending)
+      ./features/step_definitions/stock_steps.rb:103:in `/^I should see stock price "(.*?)" for "(.*?)" in less than (\d+) seconds$/'
+      features/stock.feature:86:in `Then I should see stock price "174.00" for "Apple" in less than 10 seconds'
+
+3 scenarios (1 pending, 2 passed)
+26 steps (1 pending, 25 passed)
+0m0.666s
+rannos-mbp:stock_app ranno$ 
