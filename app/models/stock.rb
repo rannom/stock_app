@@ -7,13 +7,13 @@ class Stock < ActiveRecord::Base
 
 
 	validates :name, presence: true, length: { maximum: 30 }, presence: true,
-	 uniqueness: { case_sensitive: false }
+	uniqueness: { case_sensitive: false }
 	validates_numericality_of :price, presence: true,
-	 :greater_than_or_equal_to => 0
+	:greater_than_or_equal_to => 0
 	validates_numericality_of :quantity, presence: true, :only_integer => true,
 	:greater_than_or_equal_to => 0
 	validates_numericality_of :percentage, presence: true,
-	 :greater_than_or_equal_to => 0
+	:greater_than_or_equal_to => 0
 	validates_numericality_of :years, :only_integer => true, presence: true,
 	:greater_than_or_equal_to => 0
 

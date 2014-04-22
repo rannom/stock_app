@@ -44,6 +44,8 @@ group :test do
   gem 'database_cleaner'
   gem 'rspec-rails', '~> 2.14.2'
   gem 'mechanize'
+  #gem 'capybara-webkit'
+
 end
 
 # Use ActiveModel has_secure_password

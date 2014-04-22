@@ -1,16 +1,15 @@
 module ApplicationHelper
 
-  # Returns the full title on a per-page basis.       # Documentation comment
-  def full_title(page_title)                          # Method definition
-    base_title = "Stock productivity calculator"	  # Variable assignment
-    if page_title.empty?                              # Boolean test
-      base_title                                      # Implicit return
+  def full_title(page_title) 
+    base_title = "Stock productivity calculator"
+    if page_title.empty?
+      base_title
     else
-      "#{base_title} | #{page_title}"                 # String interpolation
+      "#{base_title} | #{page_title}"
     end
   end
 
-def flash_class(level)
+  def flash_class(level)
     case level
     when :notice then "alert alert-info"
     when :success then "alert alert-success"
@@ -18,5 +17,6 @@ def flash_class(level)
     when :alert then "alert alert-danger"
     end
   end
+  
 end
 

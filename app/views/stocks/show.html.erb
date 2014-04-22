@@ -9,7 +9,7 @@
 			<div class="col-md-3">
 				<h1>data</h1>
 
-					<ul>
+				<ul>
 					<div class="table-responsive">
 						<table class="table table-striped table-bordered table-condensed table-hover" id='original input data'>		
 							<tbody id="custom_table">
@@ -41,7 +41,7 @@
 
 			<div class="col-md-6" id="chart original input data">
 				<h1>graph</h1>
-			  <%= high_chart("stock_yearly_return", build_chart(@stock)) %>
+				<%= high_chart("stock_yearly_return", build_chart(@stock)) %>
 			</div>
 
 
@@ -57,13 +57,13 @@
 									<th> Price </th>
 								</tr>
 							</thead>
-              <tbody id="custom_table">
+							<tbody id="custom_table">
 								<% @stock.calculate_productivity.each_with_index do |value, index| %>
 								<tr>
 									<td><%= index %></td>
 									<td><%= number_with_precision(value, precision: 2) %></td>
 								</tr>
-              <% end %>
+								<% end %>
 							</tbody>
 						</table>
 					</div>
