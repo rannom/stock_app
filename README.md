@@ -1,8 +1,5 @@
 # Assignment implemented in Rails 4
 
-
-Notes:
-
 Known issues:
 
 1. Table row height change after 1'st update
